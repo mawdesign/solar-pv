@@ -1,0 +1,22 @@
+{
+  "Standard Monocrystalline (20%)": {
+    "efficiency": 0.20,
+    "gamma_pdc": -0.0040,
+    "description": "Standard efficiency monocrystalline panel. Loses 0.4% output per degree C over 25C."
+  },
+  "Premium High-Efficiency (22%)": {
+    "efficiency": 0.22,
+    "gamma_pdc": -0.0029,
+    "description": "Premium panel with higher efficiency and better heat tolerance."
+  },
+  "Value Polycrystalline (16%)": {
+    "efficiency": 0.16,
+    "gamma_pdc": -0.0045,
+    "description": "Cost-effective legacy polycrystalline panel, requiring more space."
+  },
+  "Thin Film (12%)": {
+    "efficiency": 0.12,
+    "gamma_pdc": -0.0020,
+    "description": "Flexible thin-film with lower baseline efficiency but excellent heat resistance."
+  }
+}
