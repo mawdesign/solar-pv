@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Solar PV App Exclusions ---
+# Ignore generated outputs and local database
+
+*.pdf
+*.png
+data/history.jsonl
