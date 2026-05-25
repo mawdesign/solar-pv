@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solar PV Assessment Report</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+            @bottom-right {
+                content: "Page " counter(page) " of " counter(pages);
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 10pt;
+                color: #666;
+            }
+        }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #333;
+            line-height: 1.5;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        .summary-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .metrics-grid {
+            display: table;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .metric-col {
+            display: table-cell;
+            width: 50%;
+            padding: 10px;
+            background: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #27ae60;
+            display: block;
+        }
+        .metric-label {
+            font-size: 12pt;
+            color: #7f8c8d;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .plot-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Solar PV Assessment Report</h1>
+    
+    <div class="summary-box">
+        <p><strong>Location:</strong> {{ data.inputs.latitude }}, {{ data.inputs.longitude }}</p>
+        <p><strong>Panel Type:</strong> {{ data.inputs.panel_type }} ({{ data.inputs.stc_capacity_kw|round(2) }} kW STC Capacity)</p>
+        <p><strong>Array Setup:</strong> {{ data.inputs.width }}m x {{ data.inputs.length }}m ({{ data.inputs.area_m2 }}m²), Tilt: {{ data.inputs.tilt }}°, Azimuth: {{ data.inputs.azimuth }}°</p>
+    </div>
+
+    <h2>Generation Summary</h2>
+    <div class="metrics-grid">
+        <div class="metric-col">
+            <span class="metric-value">{{ data.metrics.annual_output_kwh|round(2) }} kWh</span>
+            <span class="metric-label">Estimated Annual Output</span>
+        </div>
+        <div class="metric-col">
+            <span class="metric-value">{{ data.metrics.max_hour_output_kw|round(2) }} kW</span>
+            <span class="metric-label">Peak Hourly Output</span>
+        </div>
+    </div>
+
+    <h2>Seasonal Peak Performance</h2>
+    <table>
+        <tr>
+            <th>Season / Milestone</th>
+            <th>Peak Output During Day (kW)</th>
+        </tr>
+        {% for season, profile in data.metrics.seasonal_daily_profiles_kw.items() %}
+        <tr>
+            <td>{{ season }}</td>
+            <td>{{ profile|max|round(2) }} kW</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>3D Output Profile</h2>
+    <div class="plot-container">
+        <!-- We use the absolute file:// path passed in to ensure WeasyPrint can find it -->
+        <img src="{{ plot_image_path }}" alt="3D Solar Generation Plot">
+    </div>
+
+</body>
+</html>

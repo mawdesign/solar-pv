@@ -1,0 +1,20 @@
+# Core Engine & Data Processing
+pvlib>=0.10.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# API Requests & Network
+requests>=2.31.0
+urllib3>=2.0.0
+
+# pip-system-certs # Uncomment if encountering corporate MITM SSL certificate issues
+
+# Visualization
+matplotlib>=3.7.0
+plotly>=5.15.0
+
+# PDF Generation
+reportlab>=4.0.0
+
+# Desktop UI
+flet>=0.21.0

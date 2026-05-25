@@ -220,6 +220,7 @@ __marimo__/
 # --- Solar PV App Exclusions ---
 # Ignore generated outputs and local database
 
-*.pdf
-*.png
+reports/*.pdf
+reports/*.png
+tests/export_results/*.csv
 data/history.jsonl
