@@ -21,16 +21,14 @@ It is designed with a decoupled architecture to run as:
 2.  Ensure you have Python 3.10+ installed.
 3.  Install the dependencies using the provided scripts:
 
-    **On Windows:** Simply double-click the `install_windows.bat` file, or run it directly from your command prompt. It will handle the entire setup process.
+    *   **On Windows:** Simply double-click the `install_windows.bat` file, or run it directly from your command prompt. It will handle the entire setup process.
+    *   **On Mac/Linux:**
+        1.  Open your terminal.
+        2.  Navigate to the project folder.
+        3.  Make the script executable by running: `chmod +x install_mac_linux.sh`
+        4.  Run it using: `./install_mac_linux.sh`
 
-    **On Mac/Linux:**
-
-    1.  Open your terminal.
-    2.  Navigate to the project folder.
-    3.  Make the script executable by running: `chmod +x install_mac_linux.sh`
-    4.  Run it using: `./install_mac_linux.sh`
-
-_(Note: If you are behind a corporate firewall with SSL inspection, you may also need to uncomment `pip-system-certs` in `requirements.txt` to allow Python to use your OS certificate store)._
+    _(Note: If you are behind a corporate firewall with SSL inspection, you may also need to uncomment `pip-system-certs` in `requirements.txt` to allow Python to use your OS certificate store)._
 
 ## Usage
 
